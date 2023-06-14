@@ -411,7 +411,7 @@ public class LocalNotification extends CordovaPlugin {
     private void schedule(JSONArray toasts, CallbackContext command) {
         Manager mgr = getNotMgr();
         for (int i = 0; i < toasts.length(); i++) {
-           
+           JSONObject dict = toasts.optJSONObject(i);
         }
     }
 

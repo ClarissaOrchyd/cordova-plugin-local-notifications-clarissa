@@ -414,6 +414,7 @@ public class LocalNotification extends CordovaPlugin {
            JSONObject dict = toasts.optJSONObject(i);
             Options options = new Options(dict);
             Request request = new Request(options);
+            Notification toast = mgr.schedule(request, TriggerReceiver.class);
         }
     }
 

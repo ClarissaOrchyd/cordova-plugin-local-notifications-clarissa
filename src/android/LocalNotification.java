@@ -409,7 +409,7 @@ public class LocalNotification extends CordovaPlugin {
      * @param command The callback context used when calling back into JavaScript.
      */
     private void schedule(JSONArray toasts, CallbackContext command) {
-        
+         Manager mgr = getNotMgr();
         
     }
 

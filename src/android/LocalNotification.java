@@ -410,22 +410,7 @@ public class LocalNotification extends CordovaPlugin {
      */
     private void schedule(JSONArray toasts, CallbackContext command) {
         
-        System.out.println("Inside schedule method");
         
-        Manager mgr = getNotMgr();
-
-        for (int i = 0; i < toasts.length(); i++) {
-            JSONObject dict = toasts.optJSONObject(i);
-            Options options = new Options(dict);
-            Request request = new Request(options);
-            Notification toast = mgr.schedule(request, TriggerReceiver.class);
-
-            if (toast != null) {
-                fireEvent("add", toast);
-            }
-        }
-
-        check(command);
     }
 
     /**

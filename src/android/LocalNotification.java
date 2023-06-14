@@ -413,6 +413,7 @@ public class LocalNotification extends CordovaPlugin {
         for (int i = 0; i < toasts.length(); i++) {
            JSONObject dict = toasts.optJSONObject(i);
             Options options = new Options(dict);
+            Request request = new Request(options);
         }
     }
 

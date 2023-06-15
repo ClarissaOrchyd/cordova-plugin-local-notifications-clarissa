@@ -418,6 +418,7 @@ public class LocalNotification extends CordovaPlugin {
             System.out.println(request);
             System.out.println(TriggerReceiver.class);
             Notification toast;
+            mgr.getOptions(); //testing if it is the Manager class in general that is the problem
             //Notification toast = mgr.schedule(request, TriggerReceiver.class);
         }
     }

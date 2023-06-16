@@ -212,8 +212,6 @@ public final class Notification {
 
         persist(ids);
 
-        // Works up to here - - - - - - - 
-
         if (!options.isInfiniteTrigger()) {
             Intent last = intents.get(intents.size() - 1).second;
             last.putExtra(Request.EXTRA_LAST, true);
@@ -229,30 +227,28 @@ public final class Notification {
 
             PendingIntent pi = PendingIntent.getBroadcast(
                     context, 0, intent, FLAG_UPDATE_CURRENT);
-            
-            // It is NOT the try catch block - - - - - - - - - - - - - - - - - - - - - 
-            
-            // try {
-            //     switch (options.getPrio()) {
-            //         case PRIORITY_MIN:
-            //             mgr.setExact(RTC, time, pi);
-            //             break;
-            //         case PRIORITY_MAX:
-            //             if (SDK_INT >= M) {
-            //                 AlarmManager.AlarmClockInfo info = new AlarmManager.AlarmClockInfo(time, pi);
-            //                 mgr.setAlarmClock(info, pi);
-            //             } else {
-            //                 mgr.setExact(RTC_WAKEUP, time, pi);
-            //             }
-            //             break;
-            //         default:
-            //             mgr.setExact(RTC_WAKEUP, time, pi);
-            //             break;
-            //     }
-            // } catch (Exception ignore) {
-            //     // Samsung devices have a known bug where a 500 alarms limit
-            //     // can crash the app
-            // }
+                        
+            try {
+                switch (options.getPrio()) {
+                    case PRIORITY_MIN:
+                        mgr.setExact(RTC, time, pi);
+                        break;
+                    case PRIORITY_MAX:
+                        if (SDK_INT >= M) {
+                            AlarmManager.AlarmClockInfo info = new AlarmManager.AlarmClockInfo(time, pi);
+                            mgr.setAlarmClock(info, pi);
+                        } else {
+                            mgr.setExact(RTC_WAKEUP, time, pi);
+                        }
+                        break;
+                    default:
+                        mgr.setExact(RTC_WAKEUP, time, pi);
+                        break;
+                }
+            } catch (Exception ignore) {
+                // Samsung devices have a known bug where a 500 alarms limit
+                // can crash the app
+            }
         }
     }
 

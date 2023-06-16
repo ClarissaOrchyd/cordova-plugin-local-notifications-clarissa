@@ -95,9 +95,8 @@ public final class Manager {
         Notification toast = new Notification(context, options);
 
         toast.schedule(request, receiver);
-        return null;
 
-        // return toast;
+        return toast;
     }
 
     /**

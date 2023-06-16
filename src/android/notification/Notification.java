@@ -181,36 +181,36 @@ public final class Notification {
      * @param receiver Receiver to handle the trigger event.
      */
     void schedule(Request request, Class<?> receiver) {
-        // List<Pair<Date, Intent>> intents = new ArrayList<Pair<Date, Intent>>();
-        // Set<String> ids                  = new ArraySet<String>();
-        // AlarmManager mgr                 = getAlarmMgr();
+        List<Pair<Date, Intent>> intents = new ArrayList<Pair<Date, Intent>>();
+        Set<String> ids                  = new ArraySet<String>();
+        AlarmManager mgr                 = getAlarmMgr();
 
-        // cancelScheduledAlarms();
+        cancelScheduledAlarms();
 
-        // do {
-        //     Date date = request.getTriggerDate();
+        do {
+            Date date = request.getTriggerDate();
 
-        //     Log.d("local-notification", "Next trigger at: " + date);
+            Log.d("local-notification", "Next trigger at: " + date);
 
-        //     if (date == null)
-        //         continue;
+            if (date == null)
+                continue;
 
-        //     Intent intent = new Intent(context, receiver)
-        //             .setAction(PREF_KEY_ID + request.getIdentifier())
-        //             .putExtra(Notification.EXTRA_ID, options.getId())
-        //             .putExtra(Request.EXTRA_OCCURRENCE, request.getOccurrence());
+            Intent intent = new Intent(context, receiver)
+                    .setAction(PREF_KEY_ID + request.getIdentifier())
+                    .putExtra(Notification.EXTRA_ID, options.getId())
+                    .putExtra(Request.EXTRA_OCCURRENCE, request.getOccurrence());
 
-        //     ids.add(intent.getAction());
-        //     intents.add(new Pair<Date, Intent>(date, intent));
-        // }
-        // while (request.moveNext());
+            ids.add(intent.getAction());
+            intents.add(new Pair<Date, Intent>(date, intent));
+        }
+        while (request.moveNext());
 
-        // if (intents.isEmpty()) {
-        //     unpersist();
-        //     return;
-        // }
+        if (intents.isEmpty()) {
+            unpersist();
+            return;
+        }
 
-        // persist(ids);
+        persist(ids);
 
         // if (!options.isInfiniteTrigger()) {
         //     Intent last = intents.get(intents.size() - 1).second;

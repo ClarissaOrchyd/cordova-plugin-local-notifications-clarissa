@@ -91,7 +91,7 @@ public final class Manager {
      * @param receiver Receiver to handle the trigger event.
      */
     public Notification schedule(Request request, Class<?> receiver) {
-        
+        return null;
     }
 
     /**

@@ -92,11 +92,11 @@ public final class Manager {
      */
     public Notification schedule(Request request, Class<?> receiver) {
         Options options = request.getOptions();
-        Notification toast = new Notification(context, options);
+        // Notification toast = new Notification(context, options);
 
-        toast.schedule(request, receiver);
+        // toast.schedule(request, receiver);
 
-        return toast;
+        // return toast;
     }
 
     /**

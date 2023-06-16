@@ -91,12 +91,7 @@ public final class Manager {
      * @param receiver Receiver to handle the trigger event.
      */
     public Notification schedule(Request request, Class<?> receiver) {
-        Options options = request.getOptions();
-        Notification toast = new Notification(context, options);
-
-        toast.schedule(request, receiver);
-
-        return toast;
+        
     }
 
     /**

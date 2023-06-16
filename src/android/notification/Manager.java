@@ -93,9 +93,9 @@ public final class Manager {
     public Notification schedule(Request request, Class<?> receiver) {
         Options options = request.getOptions();
         Notification toast = new Notification(context, options);
-        return null;
 
-        // toast.schedule(request, receiver);
+        toast.schedule(request, receiver);
+        return null;
 
         // return toast;
     }
